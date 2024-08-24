@@ -137,5 +137,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #weather Report API KEY
-API_KEY = config("API_KEY")
-API_URL = config("API_URL")
+API_KEY = os.environ.get("API_KEY")
+API_URL = os.environ.get("API_URL")
