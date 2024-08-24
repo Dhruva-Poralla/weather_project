@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dwuh4j9cq9f&ukiw#z20b@t#f)!5=d*+0h!p6019cgph#e13^)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True')=="True"
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','weather-project-stg2.onrender.com']
 
