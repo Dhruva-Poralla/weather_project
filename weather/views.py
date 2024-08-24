@@ -66,6 +66,7 @@ def get_weather(request):
     context = {
         'city': city_name,
         'temperature': temperature,
+        'humidity':humidity,
         'description': description,
         'icon': icon,
         'form': form,
