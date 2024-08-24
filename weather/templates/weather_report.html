@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <style>
+        /* Style for the alert box */
+        .alert {
+            padding: 20px;
+            background-color: #f44336; /* Red */
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        /* Close button for the alert */
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+        .error {
+            padding: 20px;
+            background-color: #f44336; /* Red */
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Weather Form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <!-- Error Message -->
+    {% if error_message %}
+    <div class="error">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+    {% if alert_messages %}
+    {% for alert_message in alert_messages %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            {{ alert_message }}
+        
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!-- Weather Display -->
+    <h1>Weather Report for {{ city }}</h1>
+    <p>Temperature: {{ temperature }}°C</p>
+    <p>Description: {{ description }}</p>
+    <img src="http://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="Weather icon">
+
+</body>
+</html>
